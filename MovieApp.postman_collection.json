@@ -1,0 +1,686 @@
+{
+	"info": {
+		"_postman_id": "e9ba354a-391f-42ff-ba05-7136b648c5f4",
+		"name": "Movie application Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Gateway",
+			"item": [
+				{
+					"name": "Movie CRUD",
+					"item": [
+						{
+							"name": "Get movie",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{gateway-host}}/v1/movies/1",
+									"host": [
+										"{{gateway-host}}"
+									],
+									"path": [
+										"v1",
+										"movies",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DELETE movie",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{gateway-host}}/v1/movies/9",
+									"host": [
+										"{{gateway-host}}"
+									],
+									"path": [
+										"v1",
+										"movies",
+										"9"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "PATCH update movie",
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "accept",
+										"value": "application/hal+json"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"title\": \"Lucy\",\n  \"author\": {\"id\" : \"9\"}\n}"
+								},
+								"url": {
+									"raw": "{{gateway-host}}/v1/movies/10",
+									"host": [
+										"{{gateway-host}}"
+									],
+									"path": [
+										"v1",
+										"movies",
+										"10"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "POST add movie",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"title\": \"Lucy\",\n  \"year\": \"2024-02-23\",\n  \"genre\": {\n    \"genreId\": 17\n  },\n  \"author\": {\n    \"id\": 1\n  }\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8082/v1/movies",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8082",
+									"path": [
+										"v1",
+										"movies"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Auth",
+					"item": [
+						{
+							"name": "Login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"username\" : \"admin1\",\n\"password\" : \"adminAuth123456!\"}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{gateway-host}}/v1/login",
+									"host": [
+										"{{gateway-host}}"
+									],
+									"path": [
+										"v1",
+										"login"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Authors",
+					"item": [
+						{
+							"name": "POST add author",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"firstName\": \"Lucy\",\n  \"lastName\": \"Ardila\",\n  \"birthDate\": \"1997-10-09\",\n  \"birthPlace\": \"My heart\"\n}"
+								},
+								"url": {
+									"raw": "{{gateway-host}}/v1/authors",
+									"host": [
+										"{{gateway-host}}"
+									],
+									"path": [
+										"v1",
+										"authors"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GET author",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{gateway-host}}/v1/authors/2",
+									"host": [
+										"{{gateway-host}}"
+									],
+									"path": [
+										"v1",
+										"authors",
+										"2"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "GET movies by genre",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{gateway-host}}/v1/movies/genres/1?page=0&size=20",
+							"host": [
+								"{{gateway-host}}"
+							],
+							"path": [
+								"v1",
+								"movies",
+								"genres",
+								"1"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "20"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"username\" : \"username\",\n\"password\" : \"password\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8800/v1/logout",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8800",
+							"path": [
+								"v1",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET movies by author",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{gateway-host}}/v1/movies/authors?name=Christian&page=0&size=10",
+							"host": [
+								"{{gateway-host}}"
+							],
+							"path": [
+								"v1",
+								"movies",
+								"authors"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Christian"
+								},
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "GET user by username",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "admin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{users-host}}/te-users/api/v1.0.0/users?username=admin1",
+							"host": [
+								"{{users-host}}"
+							],
+							"path": [
+								"te-users",
+								"api",
+								"v1.0.0",
+								"users"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "admin1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Movies",
+			"item": [
+				{
+					"name": "GET Movies by genre",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{movies-host}}/movies-service/v1/movies/genres/18?page=0&size=5&sort=string",
+							"host": [
+								"{{movies-host}}"
+							],
+							"path": [
+								"movies-service",
+								"v1",
+								"movies",
+								"genres",
+								"18"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "5"
+								},
+								{
+									"key": "sort",
+									"value": "string"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Movies by Author name",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{movies-host}}/movies-service/v1/movies/authors?name=Lucy&page=0&size=50",
+							"host": [
+								"{{movies-host}}"
+							],
+							"path": [
+								"movies-service",
+								"v1",
+								"movies",
+								"authors"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Lucy"
+								},
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "50"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET movie",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/hal+json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{movies-host}}/movies-service/v1/movies/16",
+							"host": [
+								"{{movies-host}}"
+							],
+							"path": [
+								"movies-service",
+								"v1",
+								"movies",
+								"16"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PATCH update movie",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/hal+json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\n  \"title\": \"lucy\",\n  \n  \"genre\": {\n    \"genreId\": 17\n  },\n  \"author\": {\n    \"id\": 1\n  }\n}"
+						},
+						"url": {
+							"raw": "{{movies-host}}/movies-service/v1/movies/5",
+							"host": [
+								"{{movies-host}}"
+							],
+							"path": [
+								"movies-service",
+								"v1",
+								"movies",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST add movie",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Lucy\",\n  \"year\": \"2024-02-23\",\n  \"genre\": {\n    \"genreId\": 17\n  },\n  \"author\": {\n    \"authorId\": 1\n  }\n}"
+						},
+						"url": {
+							"raw": "{{movies-host}}/movies-service/v1/movies",
+							"host": [
+								"{{movies-host}}"
+							],
+							"path": [
+								"movies-service",
+								"v1",
+								"movies"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Authors",
+			"item": [
+				{
+					"name": "POST add author",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"firstName\": \"Lucy\",\n  \"lastName\": \"Fer\",\n  \"birthDate\": \"1997-10-09\",\n  \"birthPlace\": \"My heart\"\n}"
+						},
+						"url": {
+							"raw": "{{authors-host}}/authors-service/v1/authors",
+							"host": [
+								"{{authors-host}}"
+							],
+							"path": [
+								"authors-service",
+								"v1",
+								"authors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET authors by name",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/hal+json"
+							}
+						],
+						"url": {
+							"raw": "{{authors-host}}/authors-service/v1/authors?name=Lucy&page=0&size=50",
+							"host": [
+								"{{authors-host}}"
+							],
+							"path": [
+								"authors-service",
+								"v1",
+								"authors"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Lucy"
+								},
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "50"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET author",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/hal+json"
+							}
+						],
+						"url": {
+							"raw": "{{authors-host}}/authors-service/v1/authors/17",
+							"host": [
+								"{{authors-host}}"
+							],
+							"path": [
+								"authors-service",
+								"v1",
+								"authors",
+								"17"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer"
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

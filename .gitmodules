@@ -1,0 +1,13 @@
+
+[submodule "gateway"]
+	path = gateway
+	url = git@github.com:fscsilva/gateway.git
+[submodule "users"]
+	path = users
+	url = git@github.com:fscsilva/users.git
+[submodule "authors"]
+	path = authors
+	url = git@github.com:fscsilva/authors.git
+[submodule "movies"]
+	path = movies
+	url = git@github.com:fscsilva/movies.git
